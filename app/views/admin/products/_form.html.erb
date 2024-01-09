@@ -20,6 +20,15 @@
     <%= form.label :description %>
     <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+  <div class="my-5">
+    <% if admin_product.images.any? %>
+      <% admin_product.images.each do |image|%>
+        <%= image_tag image, class: "w-20 h-20 object-cover rounded-md"%>
+      <%end%>
+    <%end%>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
 
   <div class="my-5">
     <%= form.label :price %>
@@ -28,12 +37,15 @@
 
   <div class="my-5">
     <%= form.label :category_id %>
-    <%= form.text_field :category_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, id:"Category", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :activate %>
     <%= form.check_box :activate, class: "block mt-2 h-5 w-5" %>
+  </div>
+  <div class="my-5">
+    <%= link_to "Product Stock", admin_product_stocks_path(admin_product), class: "underline" %>
   </div>
 
   <div class="inline">

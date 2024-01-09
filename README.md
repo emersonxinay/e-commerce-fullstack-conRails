@@ -56,3 +56,8 @@ y luego reforzar en instalar nevamente en la consoal del proyecto
 ```bash
 gem install ruby-vips
 ```
+## para relacionar tablas
+```bash
+rails g scaffold admin::stock 
+size:string amount:integer product:references
+```
