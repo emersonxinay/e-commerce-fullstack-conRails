@@ -47,3 +47,12 @@ rails active_storage:install
 ```bash
 rails db:migrate
 ```
+## para error de proceso de imagen en windows
+crearse una carpeta en el disco c con el nombre de RubyVips y luego ejecutar como administrador desde powershell
+```bash
+gem install ruby-vips --install-dir=C:/RubyVips
+```
+y luego reforzar en instalar nevamente en la consoal del proyecto
+```bash
+gem install ruby-vips
+```
