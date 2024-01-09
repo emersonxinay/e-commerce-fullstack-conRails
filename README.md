@@ -39,4 +39,11 @@ rails s
 ```bash
 127.0.0.1:3000/admins/sign_in
 ```
-
+### instalar active storage
+```bash
+rails active_storage:install
+```
+## migrar nuevamente 
+```bash
+rails db:migrate
+```
