@@ -61,3 +61,11 @@ gem install ruby-vips
 rails g scaffold admin::stock 
 size:string amount:integer product:references
 ```
+
+Para usar diseños con chart.js hay que instalar y luego generar stimulus 
+```bash
+npm install chart.js 
+```
+```bash
+rails g stimulus dashboard
+```
