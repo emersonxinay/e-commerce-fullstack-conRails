@@ -30,6 +30,4 @@ Rails.application.routes.draw do
   get "success" => "checkouts#success"
   get "cancel" => "checkouts#cancel"
 
-  
-  
 end
