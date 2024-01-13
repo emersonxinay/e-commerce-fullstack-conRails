@@ -22,13 +22,17 @@
   </div>
   <div class="my-5">
     <% if admin_product.images.any? %>
-      <% admin_product.images.each do |image|%>
-        <%= image_tag image, class: "w-20 h-20 object-cover rounded-md"%>
-      <%end%>
-    <%end%>
+      <div class="flex space-x-2">
+        <% admin_product.images.each do |image| %>
+          <%= image_tag image, class: "w-20 h-20 object-cover rounded-md" %>
+        <% end %>
+      </div>
+    <% end %>
+
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+
 
   <div class="my-5">
     <%= form.label :price %>

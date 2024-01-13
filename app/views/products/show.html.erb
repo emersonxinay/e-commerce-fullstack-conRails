@@ -1,15 +1,25 @@
 <h1>Product show page</h1>
 <div class="flex justify-center gap-20 py-10">
-  <div class="flex flex-wrap max-w-lg">
+  <!-- Sección de imágenes del producto -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
     <% @product.images.each do |image| %>
-      <%= image_tag image, class: "w-auto h-64" %>
+      <div class="relative overflow-hidden bg-gray-300 rounded-lg">
+        <%= image_tag image, class: "w-full h-40 object-cover" %>
+        <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 hover:opacity-100">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-md">Ver Detalles</button>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <div data-controller="products" data-products-product-value="<%= @product.to_json %>" class="flex flex-col items-start max-w-sm">
-    <h1 class="font-bold text-4xl uppercase"><%= @product.name %></h1>
-    <p class="text-2xl mt-4">$<%= (@product.price/100.0).to_s %>
-    <p class="text-md py-8"><%= @product.description %></p>
+
+  <!-- Detalles del producto -->
+  <div data-controller="products" data-products-product-value="<%= @product.to_json %>" class="flex flex-col flex-grow">
+    <h1 class="font-bold text-2xl uppercase"><%= @product.name %></h1>
+    <p class="text-lg mt-4">$<%= (@product.price/100.0).to_s %></p>
+    <p class="text-sm py-8"><%= @product.description %></p>
+
+    <!-- Opciones de tamaño -->
     <div class="my-8">
       <p class='uppercase text-lg'>Size</p>
       <% @product.stocks.each do |stock| %>
@@ -24,7 +34,13 @@
         <% end %>
       <% end %>
     </div>
-    <div id="selected-size"></div>
-    <button data-action="click->products#addToCart" class="inline-flex items-center justify-center px-5 py-3 border border-transparent font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Add To Cart</button>
+
+    <!-- Sección de tamaño seleccionado y botón de añadir al carrito -->
+    <div class="flex items-center justify-between">
+      <div id="selected-size"></div>
+      <button data-action="click->products#addToCart" class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+        Add To Cart
+      </button>
+    </div>
   </div>
 </div>
