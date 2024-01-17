@@ -1,4 +1,6 @@
 # fullstack e-commerce   con rails 
+img_demo
+<img src="./app/assets/images/portal_admin.png">
 * Ruby version
 ```bash
 ruby 3.3.0
