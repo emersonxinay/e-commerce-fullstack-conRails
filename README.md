@@ -69,3 +69,5 @@ npm install chart.js
 ```bash
 rails g stimulus dashboard
 ```
+
+
