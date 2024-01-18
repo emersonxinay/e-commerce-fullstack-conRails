@@ -71,5 +71,9 @@ npm install chart.js
 ```bash
 rails g stimulus dashboard
 ```
+Para crear motorbase de datos 
+```bash
+rails db:system:change --to=postgresql
+```
 
 
