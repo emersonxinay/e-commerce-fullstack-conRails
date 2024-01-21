@@ -20,19 +20,16 @@
     <%= form.label :description %>
     <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+
   <div class="my-5">
     <% if admin_product.images.any? %>
-      <div class="flex space-x-2">
-        <% admin_product.images.each do |image| %>
-          <%= image_tag image, class: "w-20 h-20 object-cover rounded-md" %>
-        <% end %>
-      </div>
+      <% admin_product.images.each do |image| %>
+        <%= image_tag image, class: "w-20 h-20 object-cover rounded-md" %>
+      <% end %>
     <% end %>
-
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
 
   <div class="my-5">
     <%= form.label :price %>
@@ -41,17 +38,19 @@
 
   <div class="my-5">
     <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.order(:name), :id, :name, id:"Category", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, id: "category", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :activate %>
-    <%= form.check_box :activate, class: "block mt-2 h-5 w-5" %>
+    <%= form.label :active %>
+    <%= form.check_box :active, class: "block mt-2 h-5 w-5" %>
   </div>
-  
-  <div class="my-5">
-    <%= link_to "Product Stock", admin_product_stocks_path(admin_product), class: "underline" %>
-  </div>
+
+  <% unless admin_product.new_record? %>
+    <div class="my-5">
+      <%= link_to "Product Stock", admin_product_stocks_path(admin_product), class: "underline" %>
+    </div>
+  <% end %>
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
